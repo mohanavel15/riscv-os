@@ -17,8 +17,6 @@ SECTIONS {
 	
 	.bss : ALIGN(4K) {		
 		*(.bss);
-		PROVIDE(stack_top = .);
-		. += 4K;
 	}
 
 	PROVIDE(kernel_end = .);

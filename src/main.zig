@@ -2,9 +2,18 @@ const uart = @import("mmio/uart.zig");
 const syscon = @import("mmio/syscon.zig");
 const std = @import("std");
 
+export var temp_mem: u64 = 0;
+export var RAM_START_ADDRESS: u64 = 0;
+
 export fn main() void {
     uart.init();
     var buffer: [255]u8 = undefined;
+
+    print("Number of cpu: ");
+    var a: [1]u8 = .{0};
+    a[0] = '0' + @as(u8, @intCast(temp_mem));
+    print(&a);
+    print("\n");
 
     while (true) {
         print("> ");
@@ -25,6 +34,10 @@ export fn main() void {
     syscon.poweroff();
 }
 
-fn print(comptime msg: []const u8) void {
+fn print(msg: []const u8) void {
     uart.write(msg);
+}
+
+export fn scheduler() void {
+    while (true) {}
 }
