@@ -3,7 +3,7 @@
 ## Run
 ```sh
   $ zig build
-  $ qemu-system-riscv64 -machine virt -bios zig-out/bin/riscv_kernel -serial mon:stdio -nographic
+  $ qemu-system-riscv64 -machine virt -smp 4 -m 1G -bios zig-out/bin/riscv_kernel -serial mon:stdio -nographic
 ```
 
 ## References
@@ -12,3 +12,4 @@
 - https://github.com/riscv/riscv-isa-manual
 - https://projectf.io/posts/riscv-cheat-sheet
 - https://github.com/zig-osdev/riscv-barebones
+- https://github.com/mit-pdos/xv6-riscv
